@@ -1,24 +1,38 @@
-# README
+# Demo Rails Bootstrap
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Rails 7 demo app with Bootstrap 5, using Docker Compose for local development.
 
-Things you may want to cover:
+## Prerequisites
 
-* Ruby version
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) (or Docker + Docker Compose)
 
-* System dependencies
+## Running the app
 
-* Configuration
+**Start the stack:**
 
-* Database creation
+```bash
+docker compose up -d
+```
 
-* Database initialization
+This starts two services — the Rails app on port `3000` and a PostgreSQL 16 database. On first boot, the entrypoint automatically runs `db:prepare` to create and migrate the database.
 
-* How to run the test suite
+**Open the app:**
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+http://localhost:3000
+```
 
-* Deployment instructions
+**Stop the stack:**
 
-* ...
+```bash
+docker compose down
+```
+
+## Stack
+
+| Service | Image / Runtime | Port |
+|---------|----------------|------|
+| app | Ruby 3.3.6 / Rails 7.2 | 3000 |
+| db | PostgreSQL 16 | 5432 |
+
+> The database does not persist between `docker compose down` / `up` cycles by default. To enable persistence, uncomment the `volumes` block in `compose.yml`.
