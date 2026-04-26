@@ -1,0 +1,43 @@
+services:
+  app:
+    build:
+      context: ./
+      target: development
+    environment:
+      DATABASE_URL: 'postgresql://postgres:super@db'
+      HOST: localhost
+      PORT: 3000
+      # RAILS_MASTER_KEY: ${STRATAX_API_RAILS_MASTER_KEY}
+      # REDIS_URL: redis://redis
+    ports:
+      - 3000:3000
+    extra_hosts: # For Linux
+      - host.docker.internal:host-gateway
+    tty: true
+    volumes:
+      - ./:/rails
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: super
+      # POSTGRES_DB:
+    ports:
+      - 5432:5432
+    # Uncomment for persistence between container sessions
+    # volumes:
+    #   - postgres:/var/lib/postgresql/data
+
+  # redis:
+  #   image: redis:7.4
+  #   ports:
+  #     - 6379:6379
+  #   volumes:
+  #     - redis:/data
+
+# Uncomment for persistence between container sessions
+# volumes:
+  # app-bundle:
+  # postgres:
+  # redis:
