@@ -4,7 +4,7 @@ services:
       context: ./
       target: development
     environment:
-      DATABASE_URL: 'postgresql://postgres:super@db'
+      DATABASE_URL: 'postgresql://postgres:super@db/postgres'
       HOST: localhost
       PORT: 3000
       # RAILS_MASTER_KEY: ${STRATAX_API_RAILS_MASTER_KEY}

@@ -1,7 +1,7 @@
 <h1 class="display-1">Users</h1>
 
-<div>
-  <button>New User</button>
+<div style="margin-bottom: 1rem;">
+  <a href="<%= new_user_path %>">Create User</a>
 </div>
 
 <table>
@@ -21,12 +21,22 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user['id'] %></td>
+
         <td><%= user['first_name'] %></td>
+
         <td><%= user['last_name'] %></td>
+
         <td><%= user['age'] %></td>
+
         <td><%= user['weight'] %></td>
-        <td><%= user['smoker'] %></td>
-        <td></td>
+
+        <td><%= user['smoker'] ? 'Yes' : 'No' %></td>
+
+        <td>
+          <a href="<%= user_path(user) %>">View</a>
+          <span style="padding: 0px 4px;">|</span>
+          <a href="<%= user_path(user) %>" data-turbo-method="delete" data-turbo-confirm="Are you sure?">Destroy</a>
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -1,0 +1,43 @@
+<h1 class="display-1">User</h1>
+
+<div style="margin-bottom: 1rem;">
+  <a href="<%= users_path %>">Back</a>
+
+  <span style="padding: 0px 4px;">|</span>
+
+  <a href="<%= user_path(@user) %>" data-turbo-method="delete" data-turbo-confirm="Are you sure?">Destroy</a>
+</div>
+
+<table>
+  <tbody>
+    <tr>
+      <th>ID</th>
+      <td><%= @user.id %></td>
+    </tr>
+
+    <tr>
+      <th>First Name</th>
+      <td><%= @user.first_name %></td>
+    </tr>
+
+    <tr>
+      <th>Last Name</th>
+      <td><%= @user.last_name %></td>
+    </tr>
+
+    <tr>
+      <th>Age</th>
+      <td><%= @user.age %></td>
+    </tr>
+
+    <tr>
+      <th>Weight</th>
+      <td><%= @user.weight %></td>
+    </tr>
+
+    <tr>
+      <th>Smoker</th>
+      <td><%= @user.smoker ? 'Yes' : 'No' %></td>
+    </tr>
+  </tbody>
+</table>
