@@ -11,6 +11,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
   def destroy
     User.find(params[:id]).destroy
 
@@ -24,6 +28,16 @@ class UsersController < ApplicationController
       redirect_to users_path
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
